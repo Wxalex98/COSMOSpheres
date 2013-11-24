@@ -9,8 +9,8 @@ void predict_kamikaze(){
 void watch_other_sphere(int timing){	
 	
 	//Variables
-	float myState[3];
-	float otherState[3];
+	float myState[12];
+	float otherState[12];
 	float myPos[3];
 	float otherPos[3];
 	float between[3];
@@ -42,9 +42,13 @@ void watch_other_sphere(int timing){
 			break;
 	}
 	//If the distances are shortening, we run away (in development, need to establish the alternPos)
-	if(distance3 < distance2 < distance1 < distance0){
-		float alternPos[3] = {0.0f,0.0f,0.0f};
-		api.setPositionTarget(alternPos);	
+	if(distance3 < distance2 && distance2< distance1 && distance1< distance0){
+		if(actualDistance<0.2f){
+			float alternPos[3] = {(blue_sphere) ? myPos[POS_X]+0.07f : myPos[POS_X]- 0.07f,myPos[POS_Y],myPos[POS_Z]};
+			api.setPositionTarget(alternPos);
+		if((otherPos[POS_Y] == myPos[POS_Y])||(otherPos[POS_Z] == myPos[POS_Z]))
+			api.setPositionTarget(otherPos);
+		}
 	}
 }
 
