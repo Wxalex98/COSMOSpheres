@@ -110,7 +110,7 @@ void phase2_prepare() {
 			target_pos[POS_Z] = (blue_sphere) ? 0.25f: -0.25f;
 			target_att[POS_X] = (blue_sphere) ? 0.75f: -0.75f;
 			target_att[POS_Y] = 0.45f;
-			target_att[POS_Z] = (blue_sphere) ? -0.50f: 0.50f;
+			target_att[POS_Z] = (blue_sphere) ? -0.5f: 0.5f;
 			movement_moveto(target_pos, false);
 			mathVecNormalize(target_att, 3);
 			api.setAttitudeTarget(target_att);
